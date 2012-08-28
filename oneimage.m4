@@ -1,0 +1,7 @@
+NAME          = "__NAME__"
+DESCRIPTION   = "__DESCRIPTION__"
+TYPE          = "OS"
+PATH          = "__PATH__"
+DRIVER        = "__DRIVER__"
+DEV_PREFIX    = "__DEV_PREFIX__"
+PERSISTENT    = "__PERSISTENT__"
