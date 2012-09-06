@@ -4,6 +4,8 @@
 
 Installed and configured:
 
+* libvirt and KVM
+* virt-install
 * one tools (oneimage)
 * OCCI tools (occi-storage)
 
