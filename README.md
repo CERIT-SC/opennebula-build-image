@@ -6,8 +6,9 @@ Installed and configured:
 
 * libvirt and KVM
 * virt-install
-* one tools (oneimage)
+* ONE tools (oneimage)
 * OCCI tools (occi-storage)
+* disabled SELinux??
 
 # Quick Start
 
