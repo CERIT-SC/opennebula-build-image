@@ -9,6 +9,7 @@ LIBVIRT_URI?=qemu:///session
 
 # virt-install
 VI?=virt-install \
+	--force \
 	--connect $(LIBVIRT_URI) \
 	--name="$(VI_NAME)" \
 	--ram=$(VI_RAM) \
@@ -16,21 +17,22 @@ VI?=virt-install \
 	--wait=$(VI_TIMEOUT) \
 	--disk path=$@.tmp,format=raw,size=$(SIZE),bus=virtio \
 	--network=user,model=virtio \
+	--network=user,model=virtio \
 	--watchdog default \
 	--video=vga \
 	--noreboot
 VI_NAME?=build-$(ON_PREFIX)
 VI_CPU?=2
 VI_RAM?=1024
-VI_TIMEOUT?=30
+VI_TIMEOUT?=45
 
 # qemu-image
 IMAGE?=$(CURDIR)/image
-QI_QCOW_OPTS?=-c
+QI_QCOW_OPTS?=-c -o cluster_size=2M
 QI_VMDK_OPTS?=
 
 # ON ... OpenNebula image
-ON_DATA_STORES?=cerit-sc-zegox cerit-sc-cloud
+ON_DATA_STORES?=cerit-sc-zegox cerit-sc-cloud cerit-sc-ha-jihlava cerit-sc-zigur_zapat
 ON_PREFIX?=$(OS)-$(OS_VERSION)
 ON_NAME?=$(ON_PREFIX)-$(ON_VERSION)
 ON_DESCRIPTION?=OpenNebula Image
@@ -51,6 +53,9 @@ M4_ONEIMAGE?=../oneimage.m4
 all: build upload clean
 
 build: $(IMAGE).$(FORMAT)
+
+cloud.tar: cloud/
+	tar -cvf $@ $?
 
 # convert raw->qcow2
 $(IMAGE).qcow2: $(IMAGE).raw
@@ -98,4 +103,4 @@ clean:
 	-virsh -q -c $(LIBVIRT_URI) undefine $(VI_NAME) 2>/dev/null 
 	-oneimage delete $(ON_NAME)
 	rm -f $(IMAGE).raw $(IMAGE).raw.tmp $(IMAGE).$(FORMAT) \
-		$(IMAGE).qcow2 $(IMAGE).vmdk
+		$(IMAGE).qcow2 $(IMAGE).vmdk cloud.tar
