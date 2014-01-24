@@ -7,12 +7,11 @@ Installed and configured:
 * libvirt and KVM
 * virt-install
 * ONE tools (oneimage)
-* OCCI tools (occi-storage)
-* disabled SELinux??
+* disabled SELinux?
 
 # Quick Start
 
-Build and upload new/updated Debian 6:
+Build and upload new/updated Debian 7:
 
-    cd debian6
+    cd debian7
     make
