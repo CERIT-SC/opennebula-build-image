@@ -1,10 +1,9 @@
 OS=CERIT-SC-CentOS
 OS_VERSION=6
-SIZE=10
 
 include ../common.mk
 
-$(IMAGE).raw: centos.ks cloud.tar ../cloud-init/cloud-init-el6.rpm
+$(IMAGE).raw: centos.ks cloud.cfg ../RPM-GPG-KEY-EPEL-6 ../RPM-GPG-KEY-CERIT-SC
 	rm -f $@.tmp
 	$(VI) --nographics \
 		--os-variant=rhel6 \
