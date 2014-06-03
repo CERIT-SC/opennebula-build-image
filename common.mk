@@ -10,15 +10,15 @@ LIBVIRT_URI?=qemu:///session
 # virt-install
 VI?=virt-install \
 	--force \
+	--console pty \
 	--connect $(LIBVIRT_URI) \
 	--name="$(VI_NAME)" \
 	--ram=$(VI_RAM) \
 	--vcpus=$(VI_CPU) \
 	--wait=$(VI_TIMEOUT) \
-	--disk path=$@.tmp,format=raw,size=$(SIZE),bus=virtio \
+	--disk path=$@.tmp,format=raw,size=$(SIZE),cache=unsafe,sparse=true,bus=virtio \
 	--network=user,model=virtio \
 	--network=user,model=virtio \
-	--watchdog default \
 	--video=vga \
 	--noreboot
 VI_NAME?=build-$(ON_PREFIX)
@@ -147,7 +147,7 @@ endef
 #	oneimage chmod "$@" $(ON_MODE)
 
 $(ON_NAME)@%: $(ON_NAME)
-	$(call oneimage,$@,$*,640)
+	$(call oneimage,$@,$*,600)
 
 $(ON_NAME)@%.public: $(ON_NAME)
 	$(call oneimage,$(ON_NAME)@$*,$*,644)

@@ -45,8 +45,8 @@ xterm
 %post --nochroot --erroronfail
 set -e
 install -Dp --mode=644 /cloud.cfg /mnt/sysimage/etc/cloud/cloud.cfg
-install -Dp --mode=644 /RPM-GPG-KEY-EPEL-6 /mnt/sysimage/etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6
-install -Dp --mode=644 /RPM-GPG-KEY-CERIT-SC /mnt/sysimage/etc/pki/rpm-gpg/RPM-GPG-KEY-CERIT-SC
+install -Dp --mode=644 /RPM-GPG-KEY-EPEL-6.cfg /mnt/sysimage/etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6
+install -Dp --mode=644 /RPM-GPG-KEY-CERIT-SC.cfg /mnt/sysimage/etc/pki/rpm-gpg/RPM-GPG-KEY-CERIT-SC
 quotacheck -vcguma
 chroot /mnt/sysimage restorecon -Fi aquota.user aquota.group
 quotaon -a

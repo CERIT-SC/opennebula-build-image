@@ -4,7 +4,7 @@ OS_CODE=wheezy
 
 include ../common.mk
 
-$(IMAGE).raw: preseed.cfg cloud.cfg ../RPM-GPG-KEY-CERIT-SC
+$(IMAGE).raw: preseed.cfg cloud.cfg ../RPM-GPG-KEY-CERIT-SC.cfg
 	rm -f $@.tmp
 	$(VI) --nographics \
 		$(patsubst %,--initrd-inject=%, $?) \
