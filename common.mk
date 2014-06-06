@@ -38,7 +38,7 @@ ON_PUBLIC_DS?=cerit-sc-cloud
 ON_PREFIX?=$(OS)-$(OS_VERSION)
 ON_NAME?=$(ON_PREFIX)-$(ON_VERSION)
 ON_DESCRIPTION?=Generic OS image by CERIT Scientific Cloud
-ON_VERSION:=$(shell oneimage list -x 2>/dev/null | egrep -xi '\s*<NAME>$(ON_PREFIX)-[0-9]+[^<]+</NAME>\s*' | sed -e 's/\s*<NAME>$(ON_PREFIX)-\([0-9]*\)[^<]*<\/NAME>\s*/\1/' | awk 'BEGIN{max=0} {if ($$0>max) max=$$0} END{printf "%04i",max+1}')
+ON_VERSION:=$(shell date +%Y%m%d%H%M)
 ON_SOURCE?=$(shell oneimage show $(ON_NAME) | awk -F'[ ]*:[ ]*' '$$1=="SOURCE" { print $$2 }')
 ON_DEV_PREFIX?=vd
 ON_PERSISTENT?=no
@@ -64,11 +64,11 @@ cloud.tar: cloud/
 
 # convert raw->qcow2
 $(IMAGE).qcow2: $(IMAGE).raw
-	qemu-img convert $(QI_QCOW_OPTS) -O qcow2 $? $@
+	nice ionice -c 3 qemu-img convert $(QI_QCOW_OPTS) -O qcow2 $? $@
 
 # convert raw->vmdk
 $(IMAGE).vmdk: $(IMAGE).raw
-	qemu-img convert $(QI_VMDK_OPTS) -O vmdk $? $@
+	nice ionice -c 3 qemu-img convert $(QI_VMDK_OPTS) -O vmdk $? $@
 
 ## upload image to default datastore through OCCI
 #$(ON_NAME): $(IMAGE).$(FORMAT)
