@@ -83,8 +83,8 @@ enabled=1
 gpgcheck=1
 EOF
 
-		cat <<EOF >/etc/yum.repos.d/epel.repo
-		[epel]
+cat <<EOF >/etc/yum.repos.d/epel.repo
+[epel]
 name=Extra Packages for Enterprise Linux 7 - \$basearch
 #baseurl=http://download.fedoraproject.org/pub/epel/7/\$basearch
 mirrorlist=https://mirrors.fedoraproject.org/metalink?repo=epel-7&arch=\$basearch
