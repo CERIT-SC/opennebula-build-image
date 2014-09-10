@@ -10,7 +10,8 @@ Installed and configured:
 * ONE tools (oneimage)
 * disabled SELinux?
 
-See [wiki](wiki/) for more information.
+See [wiki](https://github.com/CERIT-SC/opennebula-build-image/wiki)
+for more information.
 
 # Quick Start
 
