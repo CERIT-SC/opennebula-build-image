@@ -13,5 +13,15 @@ Installed and configured:
 
 Build and upload new/updated Debian 7:
 
-    cd debian7
-    make
+```bash
+$ cd debian7
+$ make build upload clean
+```
+
+Note: upload is prepared for CERIT-SC's administrators.
+Just build the image and use your own way how to upload
+image (e.g. via browser).
+
+***
+
+CERIT Scientific Cloud, <support@cerit-sc.cz>
