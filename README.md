@@ -4,10 +4,13 @@
 
 Installed and configured:
 
-* libvirt and KVM
+* GNU make
+* libvirt and QEMU/KVM
 * virt-install
 * ONE tools (oneimage)
 * disabled SELinux?
+
+See [wiki](wiki/) for more information.
 
 # Quick Start
 
