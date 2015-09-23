@@ -32,13 +32,13 @@ QI_QCOW_OPTS?=-c -o cluster_size=2M
 QI_VMDK_OPTS?=
 
 # ON ... OpenNebula image
-ON_DS?=cerit-sc-zegox cerit-sc-ha-brno cerit-sc-ha-jihlava cerit-sc-zigur_zapat
-ON_PUBLIC_DS?=cerit-sc-cloud
+ON_DS?=cerit-sc-ha-brno
+ON_PUBLIC_DS?=cerit
 
 ON_PREFIX?=$(OS)-$(OS_VERSION)
 ON_NAME?=$(ON_PREFIX)-$(ON_VERSION)
 ON_DESCRIPTION?=Generic OS image by CERIT Scientific Cloud
-ON_VERSION:=$(shell date +%Y%m%d%H%M)
+ON_VERSION:=$(shell date +%Y%m%d%H)
 ON_SOURCE?=$(shell oneimage show $(ON_NAME) | awk -F'[ ]*:[ ]*' '$$1=="SOURCE" { print $$2 }')
 ON_DEV_PREFIX?=vd
 ON_PERSISTENT?=no
