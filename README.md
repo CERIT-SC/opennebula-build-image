@@ -1,4 +1,4 @@
-# Image build scripts for CERIT-SC's OpenNebula KVM cloud
+# Build base OS images for OpenNebula KVM cloud
 
 ### Requirements
 
@@ -15,11 +15,12 @@ for more information.
 
 # Quick Start
 
-Build and upload new/updated Debian 7:
+Build latest Debian 7:
 
 ```bash
 $ cd debian7
-$ make build upload clean
+$ make build
+$ make clean
 ```
 
 Note: upload is prepared for CERIT-SC's administrators.
