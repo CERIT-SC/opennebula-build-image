@@ -85,7 +85,8 @@ $(IMAGE).vmdk: $(IMAGE).raw
 
 # upload image to ON server
 $(ON_NAME): $(IMAGE).$(FORMAT)
-	scp -o 'Compression no' -o 'Cipher blowfish' \
+	chmod o+r $?
+	scp -o 'Compression no' \
 		$? $(SCP_HOST):$(SCP_PATH)/$(ON_NAME).$(FORMAT)
 
 ## copy image from default to specified datastore
