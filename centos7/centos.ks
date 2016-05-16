@@ -75,6 +75,7 @@ yum clean all
 
 # network fixes
 sed -i '/^HWADDR/d' /etc/sysconfig/network-scripts/ifcfg-eth*
+sed -i 's/DEFROUTE=yes/DEFROUTE=no/' /etc/sysconfig/network-scripts/ifcfg-eth[^0]*
 echo 'DEVICE=eth0' >>/etc/sysconfig/network-scripts/ifcfg-eth0
 unlink /etc/hostname
 
