@@ -48,7 +48,6 @@ xterm
 set -e
 install -Dp --mode=644 /cloud.cfg /mnt/sysimage/etc/cloud/cloud.cfg
 install -Dp --mode=644 /RPM-GPG-KEY-EPEL-7.cfg /mnt/sysimage/etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
-install -Dp --mode=644 /RPM-GPG-KEY-CERIT-SC.cfg /mnt/sysimage/etc/pki/rpm-gpg/RPM-GPG-KEY-CERIT-SC
 quotacheck -vcguma
 chroot /mnt/sysimage restorecon -Fi aquota.user aquota.group
 quotaon -a
@@ -57,7 +56,6 @@ quotaon -a
 %post --erroronfail --log=/dev/console
 set -e
 rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
-rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CERIT-SC
 
 cat <<EOF >/etc/yum.repos.d/epel.repo
 [epel]
