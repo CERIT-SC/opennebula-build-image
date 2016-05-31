@@ -9,6 +9,7 @@ Installed and configured:
 * virt-install
 * ONE tools (oneimage)
 * disabled SELinux?
+* ksvalidator (from pykickstart package)
 
 See [wiki](https://github.com/CERIT-SC/opennebula-build-image/wiki)
 for more information.
@@ -18,7 +19,7 @@ for more information.
 Build latest Debian 7:
 
 ```bash
-$ cd debian7
+$ cd centos7
 $ make build
 $ make clean
 ```
