@@ -151,11 +151,10 @@ $(ON_NAME)@%: $(ON_NAME)
 	$(call oneimage,$@,$*,600)
 
 $(ON_NAME)@%.public: $(ON_NAME)
-	$(call oneimage,$(ON_NAME)@$*,$*,644)
+	$(call oneimage,$(ON_NAME),$*,644)
 
 upload: \
-		$(patsubst %, $(ON_NAME)@%.public, $(ON_PUBLIC_DS)) \
-		$(patsubst %, $(ON_NAME)@%, $(ON_DS))
+		$(patsubst %, $(ON_NAME)@%.public, $(ON_PUBLIC_DS)) 
 
 empty:
 	echo -n >empty
