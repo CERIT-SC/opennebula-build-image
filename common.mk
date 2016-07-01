@@ -163,7 +163,7 @@ clean: empty
 	-virsh -q -c $(LIBVIRT_URI) destroy  $(VI_NAME) 2>/dev/null
 	-virsh -q -c $(LIBVIRT_URI) undefine $(VI_NAME) 2>/dev/null 
 #	-oneimage delete $(ON_NAME)
-	-scp -o 'Compression no' -o 'Cipher blowfish' \
+	-scp -o 'Compression no' \
 		empty $(SCP_HOST):$(SCP_PATH)/$(ON_NAME).$(FORMAT)
 	rm -f $(IMAGE).raw $(IMAGE).raw.tmp $(IMAGE).$(FORMAT) \
 		$(IMAGE).qcow2 $(IMAGE).vmdk cloud.tar empty
