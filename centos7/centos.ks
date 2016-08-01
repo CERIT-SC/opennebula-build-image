@@ -23,10 +23,7 @@ selinux     --permissive
 zerombr
 clearpart --all --initlabel
 #autopart 
-part /boot --fstype=ext4 --size=256 --label=boot
-part pv.01 --size=1024 --grow
-volgroup VolGroup pv.01
-logvol / --fstype=ext4 --name=root --vgname=VolGroup --size=512 --grow --fsoptions="defaults,usrjquota=aquota.user,grpjquota=aquota.group,jqfmt=vfsv0"
+part / --fstype=ext4 --size=1024 --grow --label=root --fsoptions="defaults,usrjquota=aquota.user,grpjquota=aquota.group,jqfmt=vfsv0"
 bootloader --location=mbr --append="elevator=deadline console=tty0 console=ttyS0,115200"
 
 # Install repositories
@@ -68,7 +65,7 @@ gpgcheck=1
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
 EOF
 
-yum -y install cloud-init
+yum -y install cloud-init cloud-utils-growpart
 yum clean all
 
 # network fixes
